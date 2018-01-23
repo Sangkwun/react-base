@@ -1,11 +1,17 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import { routerReducer, routerMiddleware } from "react-router-redux";
+import createHistory from "history/createBrowserHistory";
+import { composeWithDevTools } from "redux-devtools-extension";
 import users from './modules/users';
 
 const env = process.env.NODE_ENV;
 
+const history = createHistory();
+
 const middlewares = [
-    thunk
+    thunk,
+    routerMiddleware(history)
 ];
 
 if(env ==="development"){
@@ -14,9 +20,23 @@ if(env ==="development"){
 }
 
 const reducer = combineReducers({
-    users,
-})
+  users,
+  routing: routerReducer
+});
 
-let store = initailState => createStore(reducer, applyMiddleware(...middlewares));
+let store;
+
+if (env === "development") {
+  store = initialState =>
+    createStore(
+      reducer,
+      composeWithDevTools(applyMiddleware(...middlewares))
+    );
+} else {
+  store = initialState =>
+   createStore(reducer, applyMiddleware(...middlewares));
+}
+
+export { history };//index.js의 Router에서 필요로함
 
 export default store();
