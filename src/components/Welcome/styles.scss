@@ -37,6 +37,48 @@
         }
     }
     .white-box{
-        width: 100%
+        width: 100%;
+        .explain{
+            display: flex;
+            flex-flow: column wrap;
+            margin-top: 200px;
+            align-items: center;
+
+            .title{
+                color: #F5A72D;
+                font-size: 25px;
+            }
+
+            .split-line{
+                margin-top: 30px;
+                margin-bottom: 30px;
+                content: " ";
+                width: 42%;
+                background-color: #5A5A5A;
+                height: 3px;
+                width: 30px;
+                left: 0;
+                top: 6px;
+                opacity: 0.8;
+            }
+
+            .description{
+                font-size: 17px;
+                color: #5D5D5D;
+
+            }
+            .button{
+                margin-top: 300px;
+                font-size: 15px;
+                color: white;
+                background-color: #5A5A5A;
+                height: 40px;
+                width: 250px;
+                border-radius: 5px;
+
+            }
+
+        }
+
     }
 }
