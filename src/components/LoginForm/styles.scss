@@ -1,0 +1,49 @@
+.container{
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    .title{
+        margin-top: 250px;
+        color: #5A5A5A;
+        font-size: 30px;
+        margin-bottom: 70px;
+    }
+
+    .login-box{
+        display: flex;
+        flex-flow: column;
+
+        .input-box{
+            border: 0;
+            border-bottom: 1px solid #5A5A5A;
+            color: #5A5A5A;
+            font-size: 15px;
+            margin-bottom: 15px;
+            
+            &:focus{
+                outline: none;
+                border-bottom: 1px solid #F5A72D;
+                color: #F5A72D;
+            }
+
+        }
+        .button{
+            margin-top: 10px;
+            margin-bottom: 20px;
+            background-color: #5A5A5A;
+            color: white;
+            font-size: 15px;
+            height: 40px;
+            width: 250px;
+            border-radius: 10px;
+        }
+    }
+    .descrition-box{
+        .change-page{
+            color: #F5A72D;
+            cursor: pointer;
+        }
+    }
+}

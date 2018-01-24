@@ -5,7 +5,7 @@ import Welcome from 'components/Welcome';
 
 const App = props => (
   <div className={styles.container}>
-    <Welcome isLoggedIn = {props.isLoggedIn} />
+    <Welcome />
   </div>
 );
 

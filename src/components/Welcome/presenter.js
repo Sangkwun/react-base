@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.scss';
 import Ionicon from "react-ionicons";
+import LoginForm from 'components/LoginForm';
 
 const Welcome = (props, state) => (
   <div className={styles.container}>
@@ -13,7 +14,7 @@ const Welcome = (props, state) => (
         alt="instead-logo"
       />
       <div className={styles.buttonBox}>
-        <div className={styles.button} onClick={props.chagePage}>
+        <div className={styles.button} onClick={props.changePage}>
           <div>{props.loginPage ? "메인페이지": "관리자페이지"}</div>
           <Ionicon icon="ios-arrow-forward" fontSize="30px" color="white" />
         </div>
@@ -25,7 +26,7 @@ const Welcome = (props, state) => (
 
 const Main = (props) => (
     <div className={styles.whiteBox}>
-        {props.loginPage? "loginPage":<Explain />}
+        {props.loginPage? <LoginForm />:<Explain />}
     </div>
 )
 const Explain = () => (
@@ -45,7 +46,7 @@ const Explain = () => (
 
 Welcome.propTypes = {
   loginPage: PropTypes.bool.isRequired,
-  chagePage: PropTypes.func.isRequired
+  changePage: PropTypes.func.isRequired
 };
 
 export default Welcome;
