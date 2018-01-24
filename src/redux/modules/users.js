@@ -16,7 +16,8 @@
 
 
 const initialState = {
-    isLoggedIn: localStorage.getItem("jwt") || false
+  isLoggedIn: localStorage.getItem("access_token") ? true : false,
+  token: localStorage.getItem("access_token")
 };
 
 

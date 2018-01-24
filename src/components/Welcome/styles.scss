@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    width: 100%;
+
+    .yellow-box{
+        background-image: url("images/background.jpg");
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+
+        .yellow-cover{
+            position: fixed;
+            background-color: rgba(245, 168, 48, 0.6);
+            width: 50%;
+            height: 100%;
+        }
+
+        .logo-image{
+            position: absolute;
+            margin-top: 5%;
+            margin-left: 3.5%;
+            height: 45px;
+        }
+        .button-box{
+            position: absolute;
+            bottom: 6%;
+            margin-left: 3.5%;
+            
+            .button{
+                display: flex;
+                flex-flow: row;
+                color: white;
+                font-size: 20px;
+                cursor: pointer;
+                align-items: center;
+            }
+        }
+    }
+    .white-box{
+        width: 100%
+    }
+}
