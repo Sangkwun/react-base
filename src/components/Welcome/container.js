@@ -6,7 +6,15 @@ class Container extends Component{
         loginPage: false
     }
     render(){
-        return <Welcome {...this.state} {...this.props}/>
+        return <Welcome {...this.state} {...this.props} chagePage={this._chagePage}/>
+    }
+    _chagePage = (event) =>{
+        const { loginPage } = this.state;
+        if(loginPage){
+            this.setState({ loginPage: false })
+        }else{
+            this.setState({ loginPage: true });
+        }
     }
 };
 

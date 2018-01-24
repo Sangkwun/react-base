@@ -13,13 +13,13 @@ const Welcome = (props, state) => (
         alt="instead-logo"
       />
       <div className={styles.buttonBox}>
-        <div className={styles.button}>
-          <div>관리자페이지</div>
+        <div className={styles.button} onClick={props.chagePage}>
+          <div>{props.loginPage ? "메인페이지": "관리자페이지"}</div>
           <Ionicon icon="ios-arrow-forward" fontSize="30px" color="white" />
         </div>
       </div>
     </div>
-    <Main loginPage={props.loginPage}/>
+    <Main loginPage={props.loginPage} />
   </div>
 );
 
@@ -31,7 +31,8 @@ const Main = (props) => (
 
 
 Welcome.propTypes = {
-  loginPage: PropTypes.bool.isRequired
+  loginPage: PropTypes.bool.isRequired,
+  chagePage: PropTypes.func.isRequired
 };
 
 export default Welcome;
