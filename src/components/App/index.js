@@ -5,6 +5,7 @@ const mapStateToProps = (state, ownProps) => {
   const { users, routing: { location } } = state;
   return {
     isLoggedIn: users.isLoggedIn,
+    userType: users.userType,
     pathname : location.pathname
   };
 };

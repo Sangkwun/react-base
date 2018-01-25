@@ -1,4 +1,5 @@
 //import
+import jwtDecode from "jwt-decode";
 
 //action
 
@@ -16,10 +17,12 @@
 
 const SAVE_TOKEN = "SAVE_TOKEN";
 
-function saveToken(token){
+function saveToken(token, expiresIn, userType){
     return {
         type: SAVE_TOKEN,
-        token
+        token,
+        expiresIn,
+        userType
     }
 };
 
@@ -31,25 +34,33 @@ function usernameLogin(username, password){
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
-            grant_type : "password",
+            grant_type: "password",
             username,
             password,
             admin: true
           })
         })
-        .then(response => response.json)
-        .then(json => {
-            console.log(json);
-        });
+        .then(response => {
+             const data = response.json().then(function(data) {
+              return(data);
+            });
+            return data
+          }
+        )
+        .then(data => {
+          const decoded = jwtDecode(data.access_token)
+          dispatch(saveToken(data.access_token, decoded.expiresIn, decoded.user_type));
+        })
+        .catch(err => console.log(err));;
     }
 }
 
-
 const initialState = {
-  isLoggedIn: localStorage.getItem("access_token") ? true : false,
-  token: localStorage.getItem("access_token")
+  isLoggedIn: false,
+  token: localStorage.getItem("access_token"),
+  expiresIn : localStorage.getItem("expires_in"),
+  user_type: ""
 };
-
 
 function reducer(state=initialState, action) {
     switch (action.type) {
@@ -61,12 +72,15 @@ function reducer(state=initialState, action) {
 };
 
 function applySetToken(state, action) {
-  const { token } = action;
+  const { token,expiresIn, userType } = action;
   localStorage.setItem("access_token", token);
+  localStorage.setItem("expiresIn", expiresIn);
   return {
     ...state,
     isLoggedIn: true,
-    token
+    token,
+    expiresIn,
+    userType,
   };
 }
 

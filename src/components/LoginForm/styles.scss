@@ -39,11 +39,35 @@
             width: 250px;
             border-radius: 10px;
         }
+        .section {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #5A5A5A;
+            font-size: 22px;
+            opacity: 0.8;
+        }
+        .description {
+            font-size: 10px;
+            color: #5A5A5A;
+        }
+        .paymethod{
+            display: flex;
+            flex-flow: column;
+            color: #5A5A5A;
+            font-size: 15px;
+            .img{
+                height: 15px;
+            }
+
+        }
     }
     .descrition-box{
         .change-page{
             color: #F5A72D;
             cursor: pointer;
         }
+    }
+    .signupBox{
+            margin-top: 200px;
     }
 }
